@@ -1,4 +1,4 @@
-# my first ruby server
+# Test server for livetracking on Ruby
 
 require 'socket' 
 require 'rubygems'
@@ -8,11 +8,6 @@ require 'mysql'
 server = TCPServer.open("localhost", 8001) # открываем сервак на 8001 порту локалхоста
 mysqlserv = Mysql::new("localhost", "root", "root", "snowdb") # локальное подключение на вагранте
 
-=begin
-myres = mysqlserv.query("SELECT * FROM `users`")
-data = myres.fetch_hash
-p data['username']
-=end
 
 loop do
 	Thread.fork(server.accept) do |client|
